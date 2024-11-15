@@ -1,0 +1,87 @@
+@use 'config' as *;
+
+@include block('media-gallery') {
+    background-color: $accent;
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(20, 40);
+    }
+
+    .title-area {
+        @include stack('v');
+
+        gap: rem(5);
+        align-items: center;
+    }
+
+    .controls {
+        @include stack('>');
+
+        gap: rem(10);
+        align-items: center;
+        justify-content: space-between;
+        padding: fluid(12, 20) 0;
+        border-top: 1px solid $primary;
+
+        .swiper-indicator {
+            @include type('overline');
+        }
+
+        .swiper-controls {
+            @include stack('>');
+
+            gap: fluid(6, 10);
+
+            button {
+                @include stack('>');
+
+                align-items: center;
+                justify-content: center;
+                width: fluid(32, 44);
+                height: fluid(32, 44);
+                padding: rem(10);
+                background-color: $primary;
+                border-radius: 50%;
+                transition: 0.2s ease-in all;
+
+                &:disabled {
+                    opacity: 0.4;
+                    cursor: not-allowed;
+                }
+
+                &.prev {
+                    transform: rotate(180deg);
+                }
+
+                svg {
+                    width: fluid(12, 16);
+                    height: auto;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    .slider-images {
+        .component-image {
+            width: 100%;
+            height: fluid(200, 540);
+
+            .img {
+                @include fit;
+            }
+        }
+
+        .component-video {
+            .play-button-wrapper {
+                background-color: rgba($black, 0.35);
+            }
+
+            iframe {
+                height: fluid(200, 540);
+            }
+        }
+    }
+}

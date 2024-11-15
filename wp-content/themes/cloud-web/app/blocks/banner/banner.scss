@@ -1,0 +1,53 @@
+@use 'config' as *;
+
+@include block('banner') {
+    position: relative;
+    overflow: hidden;
+
+    .background {
+        @include fit();
+
+        .image {
+            @include fit();
+
+            .img {
+                @include fit();
+            }
+        }
+
+        .overlay {
+            @include fit();
+
+            background-color: rgba($black, 0.65);
+        }
+    }
+
+    .wrapper {
+        position: relative;
+        z-index: 2;
+        justify-content: center;
+        padding-top: fluid(56, 72);
+        min-height: fluid(160, 320);
+
+        @include stack('v');
+
+        .content {
+            gap: rem(10);
+            max-width: fluid(400, 560);
+
+            @include stack('v');
+        }
+
+        .headline {
+            color: $white;
+        }
+
+        .text {
+            p {
+                font-size: fluid(16, 18);
+                line-height: 1.4;
+                color: $white;
+            }
+        }
+    }
+}

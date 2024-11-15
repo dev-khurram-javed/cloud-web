@@ -1,0 +1,2 @@
+window.coreTheme.blocks("media-gallery",(e=>{const r=e.querySelector(".js-slider-images");r&&new window.packages.swiper(r,{autoHeight:!0,pagination:{el:e.querySelector(".js-indicator"),type:"fraction",formatFractionCurrent:function(e){return("0"+e).slice(-2)},formatFractionTotal:function(e){return("0"+e).slice(-2)},renderFraction:function(e,r){return'<span class="'+e+'"></span>/<span class="'+r+'"></span>'}},navigation:{prevEl:e.querySelector(".js-prev"),nextEl:e.querySelector(".js-next")}})}));
+//# sourceMappingURL=media-gallery.js.map

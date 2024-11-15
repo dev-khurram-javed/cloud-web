@@ -1,0 +1,132 @@
+@use 'config' as *;
+
+@include block('featured-case-studies') {
+    position: relative;
+    overflow: hidden;
+    background-color: $accent;
+
+    .decor {
+        @include fit;
+
+        z-index: 2;
+        pointer-events: none;
+
+        .top,
+        .bottom {
+            position: absolute;
+            right: fluid(-90, -170);
+            top: fluid(-40, -80);
+            width: fluid(200, 376);
+
+            svg {
+                width: 100%;
+                fill: rgba($white, 0.95);
+                color: rgba($white, 0.95);
+            }
+        }
+
+        .bottom {
+            right: auto;
+            top: auto;
+            left: fluid(-90, -170);
+            bottom: fluid(-40, -80);
+        }
+    }
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(30, 60);
+        position: relative;
+        z-index: 2;
+
+        @include media('>tablet') {
+            @include stack('>');
+        }
+    }
+
+    .heading {
+        @include stack('v');
+
+        gap: rem(20);
+        width: 100%;
+        align-items: flex-start;
+
+        @include media('>tablet') {
+            width: fluid(320, 480, 'tablet');
+        }
+    }
+
+    .title-area {
+        @include stack('v');
+
+        gap: rem(5);
+    }
+
+    .posts {
+        flex: 1;
+        display: grid;
+        grid-template-columns: auto;
+        gap: fluid(16, 30);
+
+        @include media('>480px') {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .post-item {
+            position: relative;
+            border-radius: rem(20);
+            overflow: hidden;
+
+            &:hover {
+                .image {
+                    transform: scale(1.15);
+                }
+
+                .content {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            .image {
+                width: 100%;
+                height: rem(300, 480);
+                transition: $normal ease-in all;
+
+                @include media('>480px') {
+                    height: fluid(180, 480);
+                }
+
+                @include media('>tablet') {
+                    height: fluid(180, 335, 'tablet');
+                }
+
+                .img {
+                    @include fit;
+                }
+            }
+
+            .content {
+                @include fit;
+                @include stack('v');
+
+                gap: rem(10);
+                align-items: center;
+                justify-content: center;
+                background-color: rgba($black, 0.75);
+                z-index: 2;
+                opacity: 0;
+                padding: fluid(10, 20);
+                visibility: hidden;
+                transition: $normal $ease-acc all;
+
+                .title {
+                    a {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

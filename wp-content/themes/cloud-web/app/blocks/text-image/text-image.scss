@@ -1,0 +1,59 @@
+@use 'config' as *;
+
+@include block('text-image') {
+    position: relative;
+    overflow: hidden;
+
+    &.bg-dark {
+        background-color: $accent;
+    }
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(20, 50);
+        align-items: center;
+        flex-direction: column-reverse;
+
+        &.img-left {
+            @include media('>tablet') {
+                flex-direction: row-reverse;
+            }
+        }
+
+        @include media('>tablet') {
+            @include stack('>');
+        }
+    }
+
+    .content {
+        @include stack('v');
+
+        gap: rem(20);
+
+        .desc {
+            @include stack('v');
+
+            gap: rem(16);
+        }
+    }
+
+    .img-wrap {
+        width: 100%;
+    }
+
+    .image {
+        width: 100%;
+        height: fluid(260, 480);
+        border-radius: rem(20);
+
+        @include media('>tablet') {
+            width: fluid(380, 595, 'tablet');
+            height: fluid(281, 440, 'tablet');
+        }
+
+        .img {
+            @include fit;
+        }
+    }
+}

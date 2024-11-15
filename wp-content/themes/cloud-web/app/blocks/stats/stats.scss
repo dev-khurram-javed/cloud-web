@@ -1,0 +1,120 @@
+@use 'config' as *;
+
+@include block('stats') {
+    position: relative;
+    overflow: hidden;
+
+    &.bg-dark {
+        background-color: $accent;
+    }
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(20, 60);
+        align-items: center;
+        flex-direction: column-reverse;
+
+        &.img-left {
+            @include media('>tablet') {
+                flex-direction: row-reverse;
+            }
+        }
+
+        @include media('>tablet') {
+            @include stack('>');
+        }
+    }
+
+    .content {
+        @include stack('v');
+
+        gap: fluid(20, 40);
+
+        .title-area {
+            @include stack('v');
+
+            gap: rem(5);
+        }
+
+        .desc {
+            @include stack('v');
+
+            gap: rem(16);
+        }
+
+        .stats {
+            @include stack('>');
+
+            gap: rem(10);
+            justify-content: space-between;
+            border-top: 1px solid $gray;
+
+            .stat {
+                @include stack('v');
+
+                gap: rem(10);
+                position: relative;
+                padding-top: rem(20);
+
+                &:after {
+                    position: absolute;
+                    left: 0;
+                    top: -1px;
+                    width: fluid(40, 60);
+                    height: 1px;
+                    content: '';
+                    background-color: $primary;
+                }
+
+                .title {
+                    display: block;
+                    text-transform: uppercase;
+                    font-size: fluid(14, 16);
+                    line-height: 1.1;
+                    font-weight: 600;
+                    color: $secondary;
+                }
+
+                .stat-value {
+                    @include stack('>');
+
+                    align-items: center;
+
+                    .num {
+                        font-size: fluid(50, 80);
+                        line-height: 1;
+                        font-weight: 500;
+                        color: $primary;
+                    }
+
+                    .suf {
+                        font-size: fluid(18, 24);
+                        line-height: 1;
+                        font-weight: 500;
+                        color: $primary;
+                    }
+                }
+            }
+        }
+    }
+
+    .img-wrap {
+        width: 100%;
+    }
+
+    .image {
+        width: 100%;
+        height: fluid(340, 640);
+        border-radius: rem(20);
+
+        @include media('>tablet') {
+            width: fluid(377, 590, 'tablet');
+            height: fluid(409, 640, 'tablet');
+        }
+
+        .img {
+            @include fit;
+        }
+    }
+}

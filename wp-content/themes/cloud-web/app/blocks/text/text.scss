@@ -1,0 +1,22 @@
+@use 'config' as *;
+
+@include block('text') {
+    background-color: $accent;
+
+    .wrapper {
+        @include stack('v');
+
+        align-items: center;
+        gap: fluid(20, 40);
+
+        .text {
+            max-width: rem(920);
+            font-size: fluid(18, 22);
+            line-height: 1.4;
+
+            p {
+                font-weight: 600;
+            }
+        }
+    }
+}

@@ -1,0 +1,109 @@
+@use 'config' as *;
+
+@include component('navigation') {
+    display: none;
+
+    @include media('>tablet') {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+    }
+
+    >ul {
+        @include stack('>');
+
+        align-items: center;
+        gap: fluid(20, 30);
+
+        >.nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            &.active {
+                .nav-item-link {
+                    color: $primary;
+
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+
+            &:hover {
+                .nav-item-link {
+                    color: $primary;
+
+                    &::after {
+                        width: 100%;
+                    }
+                }
+
+                >.dropdown {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+            }
+
+            >.nav-item-link {
+                color: $secondary;
+                font-size: rem(16);
+                font-weight: 700;
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    content: '';
+                    width: 0;
+                    height: rem(3);
+                    border-radius: rem(3);
+                    background-color: $primary;
+                    transition: $normal width $ease-acc;
+                }
+            }
+
+            .dropdown {
+                padding: rem(10) 0 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: $normal ease-in all;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                min-width: rem(220);
+                transform: translateY(-20px);
+                z-index: 5;
+
+                >ul {
+                    background: $accent;
+                    overflow: hidden;
+                    border-radius: rem(4);
+
+                    >.nav-item {
+                        &:not(:last-child) {
+                            border-bottom: 1px solid $primary;
+                        }
+
+                        &:hover {
+                            .nav-item-link {
+                                background-color: $secondary;
+                                color: $white;
+                            }
+                        }
+
+                        >.nav-item-link {
+                            color: $primary;
+                            padding: rem(10);
+                            display: block;
+                            transition: $normal ease-in all;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

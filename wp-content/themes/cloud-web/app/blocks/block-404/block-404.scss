@@ -1,0 +1,59 @@
+@use 'config' as *;
+
+@include block('block-404') {
+    position: relative;
+    overflow: hidden;
+    background-color: $accent;
+    height: 100vh;
+
+    .decor {
+        @include fit;
+
+        z-index: 2;
+        pointer-events: none;
+
+        .top,
+        .bottom {
+            position: absolute;
+            right: fluid(-90, -170);
+            top: fluid(-40, -80);
+            width: fluid(200, 376);
+
+            svg {
+                width: 100%;
+                fill: rgba($primary, 0.2);
+                color: rgba($primary, 0.2);
+            }
+        }
+
+        .bottom {
+            right: auto;
+            top: auto;
+            left: fluid(-90, -170);
+            bottom: fluid(-40, -80);
+        }
+    }
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(20, 40);
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        .headline {
+            font-size: fluid(76, 120);
+            line-height: 1;
+            font-weight: 600;
+            color: $secondary;
+        }
+
+        .text {
+            @include type('overline');
+
+            line-height: 1.25;
+            text-align: center;
+        }
+    }
+}

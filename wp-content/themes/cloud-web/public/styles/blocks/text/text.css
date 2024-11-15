@@ -1,0 +1,2 @@
+body .is-root-container .block-text{background-color:#e6f1f9}body .is-root-container .block-text .wrapper{display:flex;flex-flow:column;align-items:center;gap:min(calc(1.25rem + 1.25 * (100vw - 22.5rem) / 77.5),2.5rem)}body .is-root-container .block-text .wrapper .text{max-width:57.5rem;font-size:min(calc(1.125rem + 0.25 * (100vw - 22.5rem) / 77.5),1.375rem);line-height:1.4}body .is-root-container .block-text .wrapper .text p{font-weight:600}
+/*# sourceMappingURL=text.css.map */

@@ -1,0 +1,121 @@
+@use 'config' as *;
+
+@include block('features') {
+    position: relative;
+    overflow: hidden;
+    background-color: $primary;
+
+    .decor {
+        @include fit;
+
+        .top,
+        .bottom {
+            position: absolute;
+            right: fluid(-90, -170);
+            top: fluid(-40, -80);
+            width: fluid(200, 376);
+
+            svg {
+                width: 100%;
+                fill: rgba($white, 0.2);
+                color: rgba($white, 0.2);
+            }
+        }
+
+        .bottom {
+            right: auto;
+            top: auto;
+            left: fluid(-90, -170);
+            bottom: fluid(-40, -80);
+        }
+    }
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(30, 60);
+        position: relative;
+        z-index: 2;
+
+        @include media('>phone') {
+            @include stack('>');
+        }
+    }
+
+    .heading {
+        @include stack('v');
+
+        gap: rem(20);
+        width: 100%;
+
+        @include media('>phone') {
+            width: fluid(320, 420);
+        }
+
+        .text {
+            color: $white;
+        }
+    }
+
+    .title-area {
+        @include stack('v');
+
+        gap: rem(5);
+
+        .headline {
+            color: $white;
+        }
+    }
+
+    .feats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: fluid(20, 30);
+        flex: 1;
+
+        @include media('>tablet') {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .col {
+            @include stack('v');
+
+            gap: rem(10);
+            align-items: center;
+            background-color: $accent;
+            padding: fluid(12, 20);
+            border-radius: rem(20);
+
+            .icon {
+                display: block;
+                width: fluid(52, 72);
+                height: fluid(52, 72);
+                padding: rem(5);
+                border: 1px dashed $secondary;
+                border-radius: fluid(52, 72);
+
+                .cover {
+                    @include stack('>');
+
+                    align-items: center;
+                    justify-content: center;
+                    width: fluid(40, 60);
+                    height: fluid(40, 60);
+                    background-color: $secondary;
+                    border-radius: rem(60);
+                }
+
+                svg {
+                    width: fluid(24, 30);
+                    fill: $white;
+                    color: $white;
+                }
+            }
+
+            .title {
+                font-weight: 400;
+                color: $secondary;
+            }
+        }
+    }
+}

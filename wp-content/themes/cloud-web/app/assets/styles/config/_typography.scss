@@ -1,0 +1,62 @@
+@use 'sass:map';
+@use 'util' as *;
+
+$font-body: "Quicksand", serif;
+$font-headings: "Quicksand", serif;
+
+$typography: (
+    text-base: (font-size: fluid(14, 16),
+        line-height: 1.5,
+    ),
+
+    overline: (font-family: $font-body,
+        font-size: fluid(14, 20),
+        line-height: 1.1,
+        font-weight: 600,
+    ),
+
+    heading-1: (font-family: $font-headings,
+        font-size: fluid(44, 64),
+        font-weight: normal,
+        line-height: 1.1,
+        letter-spacing: -1px),
+
+    heading-2: (font-family: $font-headings,
+        font-size: fluid(38, 58),
+        font-weight: normal,
+        line-height: 1.1,
+        letter-spacing: -1px),
+
+    heading-3: (font-family: $font-headings,
+        font-size: fluid(32, 46),
+        font-weight: normal,
+        line-height: 1.1,
+        letter-spacing: -1px),
+
+    heading-4: (font-family: $font-headings,
+        font-size: fluid(26, 36),
+        font-weight: normal,
+        line-height: 1.1,
+        letter-spacing: -1px),
+
+    heading-5: (font-family: $font-headings,
+        font-size: fluid(22, 30),
+        font-weight: normal,
+        line-height: 1.1,
+        letter-spacing: -1px),
+
+    heading-6: (font-family: $font-headings,
+        font-size: fluid(18, 26),
+        font-weight: bold,
+        line-height: 1.1,
+    )
+);
+
+// Typography styles.
+@mixin type($name) {
+    @if $typography and map.has-key($typography, $name ) {
+        @each $prop, $value in map.get($typography, $name ) {
+            #{$prop}: #{$value};
+        }
+    }
+}

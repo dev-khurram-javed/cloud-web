@@ -1,0 +1,99 @@
+@use 'config' as *;
+
+@include block('listing-grid') {
+    position: relative;
+    overflow: hidden;
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(2.5rem, 5rem);
+        align-items: center;
+        position: relative;
+        z-index: 2;
+
+        .title-area {
+            @include stack('v');
+
+            gap: rem(5);
+            align-items: center;
+        }
+
+        .header {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: fluid(20, 40);
+
+            @include media('>=phone') {
+                grid-template-columns: 1fr fluid(340, 380, 'phone');
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .search {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+                gap: rem(8);
+
+                @include media('>=phone') {
+                    max-width: rem(380);
+                }
+
+                .field {
+                    display: grid;
+                    grid-template-columns: 1fr;
+
+                    input {
+                        border: 0;
+                        border-radius: 0;
+                        outline: none;
+                        font-size: rem(16);
+                        line-height: 1.4;
+
+                        &::placeholder,
+                        &.placeholder {
+                            font-size: rem(16);
+                            line-height: 1.4;
+                        }
+                    }
+
+                    .line {
+                        height: rem(1);
+                        background: $black;
+                        opacity: 0.5;
+                    }
+                }
+
+                .submit {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    order: -1;
+
+                    svg {
+                        width: rem(20);
+                        height: auto;
+                        color: $black;
+                    }
+                }
+            }
+        }
+
+        .posts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: fluid(30, 40);
+            width: 100%;
+
+            &.loading {
+                opacity: 0.2;
+                pointer-events: none;
+            }
+
+            @include media('>=tablet') {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}

@@ -1,0 +1,83 @@
+@use 'config' as *;
+
+@include block('cards-grid') {
+    position: relative;
+    background-color: $secondary;
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(30, 60);
+        align-items: center;
+
+        .title-area {
+            @include stack ('v');
+
+            align-items: center;
+            gap: rem(4);
+
+            .headline {
+                color: $white;
+            }
+        }
+
+        .card-items {
+            @include stack('v');
+
+            gap: fluid(20, 30);
+
+            @include media('>phone') {
+                @include stack('>');
+            }
+
+            .item {
+                @include stack('v');
+
+                gap: rem(20);
+                background-color: $white;
+                border-radius: rem(20);
+                padding: fluid(14, 30);
+
+                @include media('>phone') {
+                    width: 33%;
+                }
+
+                .head {
+                    @include stack('>');
+
+                    gap: fluid(8, 14);
+                    align-items: center;
+                }
+
+                .icon {
+                    display: block;
+                    width: fluid(62, 82);
+                    height: fluid(62, 82);
+                    padding: rem(5);
+                    border: 1px dashed $primary;
+                    border-radius: fluid(62, 82);
+
+                    .cover {
+                        @include stack('>');
+
+                        align-items: center;
+                        justify-content: center;
+                        width: fluid(50, 70);
+                        height: fluid(50, 70);
+                        background-color: $primary;
+                        border-radius: rem(70);
+                    }
+
+                    svg {
+                        width: fluid(30, 38);
+                        fill: $white;
+                    }
+                }
+
+                .heading {
+                    color: $secondary;
+                }
+            }
+        }
+    }
+}

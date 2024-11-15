@@ -1,0 +1,108 @@
+@use 'config' as *;
+
+@include block('text-image-2') {
+    position: relative;
+    overflow: hidden;
+
+    .wrapper {
+        @include stack('v');
+
+        gap: fluid(20, 60);
+        align-items: center;
+        flex-direction: column-reverse;
+
+        &.img-left {
+            @include media('>phone') {
+                flex-direction: row-reverse;
+            }
+        }
+
+        @include media('>phone') {
+            @include stack('>');
+        }
+    }
+
+    .content {
+        @include stack('v');
+
+        gap: fluid(15, 40);
+        flex: 1;
+
+        .title-area {
+            @include stack('v');
+
+            gap: rem(5);
+        }
+
+        .desc {
+            @include stack('v');
+
+            gap: rem(20);
+        }
+    }
+
+    .img-wrap {
+        width: 100%;
+        max-width: rem(360);
+        position: relative;
+        margin-bottom: fluid(26, 40);
+
+        @include media('>phone') {
+            width: 50%;
+            max-width: inherit;
+        }
+    }
+
+    .image {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        border-radius: rem(240);
+        background-color: $white;
+
+        &:after {
+            position: absolute;
+            content: "";
+            top: -7px;
+            left: -7px;
+            right: -7px;
+            bottom: -7px;
+            border-radius: rem(247);
+            border: 8px dashed $secondary;
+        }
+
+        &.image-1 {
+            width: 84%;
+            height: rem(436);
+            padding: fluid(8, 14);
+
+            @include media('>phone') {
+                height: fluid(317, 750);
+            }
+
+        }
+
+        &.image-2 {
+            width: 35.5%;
+            height: rem(175);
+            padding: fluid(8, 14);
+            position: absolute;
+            right: 0;
+            bottom: fluid(-30, -50);
+
+            @include media('>phone') {
+                height: fluid(150, 300);
+            }
+        }
+
+        .picture {
+            position: relative;
+            overflow: hidden;
+            border-radius: rem(240);
+        }
+
+        .img {
+            @include fit;
+        }
+    }
+}

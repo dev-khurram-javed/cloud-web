@@ -1,0 +1,109 @@
+@use 'config' as *;
+
+@include block('contact-form') {
+    .wrapper {
+        @include stack('v');
+
+        align-items: center;
+        gap: fluid(20, 50);
+
+        @include media('>phone') {
+            @include stack('>');
+
+            flex-direction: row-reverse;
+        }
+
+        .info-area {
+            @include stack('v');
+
+            width: 100%;
+            gap: fluid(14, 30);
+            border-radius: rem(20);
+            padding: fluid(20, 40);
+            background-color: $accent;
+            overflow: hidden;
+            position: relative;
+
+            &:after {
+                position: absolute;
+                content: "";
+                top: -6px;
+                left: -6px;
+                right: -6px;
+                bottom: -6px;
+                border-radius: rem(26);
+                border: 7px dashed $secondary;
+                pointer-events: none;
+            }
+
+            @include media('>phone') {
+                width: fluid(280, 430, 'phone');
+            }
+
+            .line {
+                display: block;
+                width: 100%;
+                height: 1px;
+                background-color: $primary;
+            }
+
+            .info-item {
+                @include stack('v');
+
+                gap: rem(8);
+
+                .title {
+                    @include type('overline');
+
+                    color: $secondary;
+                }
+
+                .value {
+                    color: $text;
+                }
+
+                a {
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+
+            .social-items {
+                @include stack('>');
+
+                align-items: center;
+                gap: fluid(10, 16);
+
+                li {
+                    a {
+                        @include stack('v');
+
+                        align-items: center;
+                        justify-content: center;
+                        color: $secondary;
+                        transition: 0.2s ease-in all;
+
+                        &:hover {
+                            color: $primary;
+                        }
+
+                        .icon {
+                            svg {
+                                width: rem(20);
+                                height: rem(20);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .form-area {
+            @include stack('v');
+
+            gap: fluid(20, 40);
+            flex: 1;
+        }
+    }
+}

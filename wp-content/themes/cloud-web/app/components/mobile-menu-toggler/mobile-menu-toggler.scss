@@ -1,0 +1,45 @@
+@use 'config' as *;
+
+@include component('mobile-menu-toggler') {
+    @include stack('>');
+
+    align-items: center;
+    justify-content: flex-end;
+
+    @include media('>tablet') {
+        display: none;
+    }
+
+    &.active {
+        .icon {
+            &.open {
+                display: none;
+            }
+
+            &.close {
+                display: flex;
+            }
+        }
+    }
+
+    .icon {
+        @include stack('>');
+
+        width: rem(36);
+        height: rem(36);
+        background: $primary;
+        border-radius: rem(36);
+        align-items: center;
+        justify-content: center;
+
+        &.close {
+            display: none;
+        }
+
+        svg {
+            fill: $white;
+            width: rem(16);
+            height: auto;
+        }
+    }
+}

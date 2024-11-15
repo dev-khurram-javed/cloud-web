@@ -1,0 +1,9 @@
+@use 'config' as *;
+
+@include component('headline') {
+    color: $secondary;
+
+    span {
+        color: $primary;
+    }
+}
