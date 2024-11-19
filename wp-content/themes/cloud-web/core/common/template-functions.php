@@ -25,7 +25,7 @@ function wp_get_taxonomy_template ($taxonomy) {
     return $query->have_posts() ? $query->posts[0] : null;
 }
 
-// Get Archive Template
+// Get Post Type Template
 function wp_get_post_type_archive($post_type) {
     $query = new WP_Query([
         'post_type' => 'page',

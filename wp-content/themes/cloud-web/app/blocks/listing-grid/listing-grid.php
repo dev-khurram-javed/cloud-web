@@ -137,7 +137,7 @@ $fields = [
     wp_acf_field('Overline', 'text'),
     wp_acf_field('Heading', 'headline'),
     wp_acf_field('Post Types', 'select', [
-        'choices' => $public_post_types,
+        'choices' => list_post_types(),
         'multiple' => 1,
         'instructions' => 'Select the post types you want to display. (Hold ctrl or cmd to select multiple options.)',
     ]),

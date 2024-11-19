@@ -32,12 +32,12 @@ register_option_page('Default Pages', [
 register_option_page('Header', [
     wp_acf_field('Logo', 'image', [
         'required' => 1
-    ], '50'),
+    ]),
     wp_acf_field('Menu', 'select', [
         'choices' => $menu_items,
         'required' => 1
     ], '50'),
-    wp_acf_field('Phone', 'text'),
+    wp_acf_field('Phone', 'text', [], '50'),
 ], [ 'parent' => 'site-options' ]);
 
 // Register Footer Options

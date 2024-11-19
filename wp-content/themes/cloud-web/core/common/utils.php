@@ -183,3 +183,56 @@ function list_forms() {
 
     return $forms_list;
 }
+
+// Get the List of public post types.
+function list_post_types($exclude = []) {
+    $core_excluded = ['post', 'mega-menu', 'attachment'];
+
+    if(!empty($exclude)) {
+        array_merge($core_excluded, $exclude);
+    } else {
+        $exclude = $core_excluded;
+    }
+
+    $post_types = get_post_types([
+        'public' => true
+    ]);
+
+    $public_post_types = array_reduce($post_types, function ($carry, $item) use ($exclude) {
+        // Exclude these post types from the archive feature.
+        if (in_array($item, $exclude)) {
+            return $carry;
+        }
+    
+        return array_merge($carry, [$item => get_post_type_object($item)->label]);
+    }, []);
+
+    return $public_post_types;
+}
+
+// Get the List of public taxonomies.
+function list_taxonomies($exclude = []) {
+    $core_excluded = ['post', 'mega-menu', 'attachment'];
+
+    if(!empty($exclude)) {
+        array_merge($core_excluded, $exclude);
+    } else {
+        $exclude = $core_excluded;
+    }
+
+    $tax = get_taxonomies([
+        'publicly_queryable' => true,
+        'show_ui' => true,
+    ]);
+
+    $public_taxonomies = array_reduce($tax, function ($carry, $item) use ($exclude) {
+        // Exclude these taxonomies from the archive feature.
+        if (in_array($item, $exclude)) {
+            return $carry;
+        }
+
+        return array_merge($carry, [$item => get_taxonomy($item)->label]);
+    }, []);
+
+    return $public_taxonomies;
+}

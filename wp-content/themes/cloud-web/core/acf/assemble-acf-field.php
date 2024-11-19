@@ -1,7 +1,5 @@
 <?php
 
-// TODO: Add Option for Ref/Alias
-
 // Assemble ACF field array
 function wp_acf_field($label, $type, $options = [], $width = '', $class = '', $id = '') {
     if (!$label || !$type) return;
