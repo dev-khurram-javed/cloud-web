@@ -1,10 +1,7 @@
 <?php 
 wp_register_component('Custom Dropdown', function($data) {
     // Bail early if there are no Posts.
-    if (empty($data['options'])) { 
-        echo 'No options'; 
-        return;
-    }
+    if (empty($data['options'])) return;
 ?>
     <div>
         <?php if ($data['label']) : ?>
@@ -26,16 +23,7 @@ wp_register_component('Custom Dropdown', function($data) {
     </div>
 <?php
 }, [
-    'options' => [
-        [
-            'label' => 'Events',
-            'value' => 'events'
-        ],
-        [
-            'label' => 'News',
-            'value' => 'news'
-        ]
-    ],
+    'options' => [],
     'label' => '',
     'placeholder' => 'All items',
     'placeholder_link' => '#',

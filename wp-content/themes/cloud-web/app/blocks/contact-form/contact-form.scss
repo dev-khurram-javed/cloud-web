@@ -21,20 +21,21 @@
             border-radius: rem(20);
             padding: fluid(20, 40);
             background-color: $accent;
+            border: 1px solid $primary;
             overflow: hidden;
             position: relative;
 
-            &:after {
-                position: absolute;
-                content: "";
-                top: -6px;
-                left: -6px;
-                right: -6px;
-                bottom: -6px;
-                border-radius: rem(26);
-                border: 7px dashed $secondary;
-                pointer-events: none;
-            }
+            // &:after {
+            //     position: absolute;
+            //     content: "";
+            //     top: -6px;
+            //     left: -6px;
+            //     right: -6px;
+            //     bottom: -6px;
+            //     border-radius: rem(26);
+            //     border: 7px dashed $secondary;
+            //     pointer-events: none;
+            // }
 
             @include media('>phone') {
                 width: fluid(280, 430, 'phone');

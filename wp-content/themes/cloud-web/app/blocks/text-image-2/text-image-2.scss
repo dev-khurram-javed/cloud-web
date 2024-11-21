@@ -57,24 +57,24 @@
         width: 100%;
         overflow: hidden;
         position: relative;
-        border-radius: rem(240);
-        background-color: $white;
+        border-radius: rem(20);
+        // background-color: $white;
 
-        &:after {
-            position: absolute;
-            content: "";
-            top: -7px;
-            left: -7px;
-            right: -7px;
-            bottom: -7px;
-            border-radius: rem(247);
-            border: 8px dashed $secondary;
-        }
+        // &:after {
+        //     position: absolute;
+        //     content: "";
+        //     top: -7px;
+        //     left: -7px;
+        //     right: -7px;
+        //     bottom: -7px;
+        //     border-radius: rem(247);
+        //     border: 8px dashed $secondary;
+        // }
 
         &.image-1 {
             width: 84%;
             height: rem(436);
-            padding: fluid(8, 14);
+            // padding: fluid(8, 14);
 
             @include media('>phone') {
                 height: fluid(317, 750);
@@ -85,7 +85,7 @@
         &.image-2 {
             width: 35.5%;
             height: rem(175);
-            padding: fluid(8, 14);
+            // padding: fluid(8, 14);
             position: absolute;
             right: 0;
             bottom: fluid(-30, -50);
@@ -98,7 +98,7 @@
         .picture {
             position: relative;
             overflow: hidden;
-            border-radius: rem(240);
+            border-radius: rem(20);
         }
 
         .img {
