@@ -52,7 +52,7 @@
                 <?php endif; ?>
                 <?php 
                     if ($show_filters) {
-                        foreach ($filters as $key => $filter) {
+                        foreach ($archive['filters'] as $key => $filter) {
                             $filter['placeholder_link'] = home_url('case-studies');
                             component('custom-dropdown', $filter);
                         }
