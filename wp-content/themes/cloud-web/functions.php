@@ -10,8 +10,8 @@ $acf_custom_fields = [];
 add_action( 'init', function() {
     require_once CORE_PATH . '/common/index.php';
     require_once CORE_PATH . '/acf/index.php';
-    require_once CORE_PATH . '/post-types/index.php';
     require_once CORE_PATH . '/taxonomies/index.php';
+    require_once CORE_PATH . '/post-types/index.php';
     require_once CORE_PATH . '/acf/core-fields.php';
     require_once CORE_PATH . '/components/index.php';
     require_once CORE_PATH . '/blocks/index.php';

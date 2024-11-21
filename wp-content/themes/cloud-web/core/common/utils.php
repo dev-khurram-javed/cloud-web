@@ -186,7 +186,7 @@ function list_forms() {
 
 // Get the List of public post types.
 function list_post_types($exclude = []) {
-    $core_excluded = ['post', 'mega-menu', 'attachment'];
+    $core_excluded = ['post', 'mega-menu', 'attachment', 'page'];
 
     if(!empty($exclude)) {
         array_merge($core_excluded, $exclude);
@@ -207,12 +207,12 @@ function list_post_types($exclude = []) {
         return array_merge($carry, [$item => get_post_type_object($item)->label]);
     }, []);
 
-    return $public_post_types;
+    return (!empty($public_post_types)) ? $public_post_types : ['' => 'No Post Types Found'];
 }
 
 // Get the List of public taxonomies.
 function list_taxonomies($exclude = []) {
-    $core_excluded = ['post', 'mega-menu', 'attachment'];
+    $core_excluded = ['category', 'post_tag'];
 
     if(!empty($exclude)) {
         array_merge($core_excluded, $exclude);
@@ -234,5 +234,5 @@ function list_taxonomies($exclude = []) {
         return array_merge($carry, [$item => get_taxonomy($item)->label]);
     }, []);
 
-    return $public_taxonomies;
+    return (!empty($public_taxonomies)) ? $public_taxonomies : ['' => 'No Taxonomies Found'];
 }

@@ -27,5 +27,9 @@ window.coreTheme = {
     components
 }
 
-window.packages = { swiper: Swiper };
 setupAppearAnimations();
+
+window.packages = {
+    swiper: Swiper,
+    animations: setupAppearAnimations
+};

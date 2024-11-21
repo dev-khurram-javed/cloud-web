@@ -154,13 +154,13 @@ function enqueue_component_scripts($label, $area = 'all') {
     if (file_exists($js_path)) {
         if ($area == 'all' || $area == 'frontend') {
             if (!wp_script_is($handle)) {
-                wp_enqueue_script( $handle, $js_src, [], '', true );
+                wp_enqueue_script( $handle, $js_src, [], '', ['strategy' => 'defer', 'in_footer' => true] );
             }
         }
 
         if ($area == 'all' || $area == 'admin') {
             add_action( 'admin_enqueue_scripts', function() use($handle, $js_src) {
-                wp_enqueue_script( $handle . '-admin', $js_src, [], '', true );
+                wp_enqueue_script( $handle . '-admin', $js_src, [], '', ['strategy' => 'defer', 'in_footer' => true] );
             });
         }
     }

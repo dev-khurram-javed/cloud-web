@@ -115,8 +115,6 @@ function register_block_assets($slug) {
 
         if (file_exists(PUBLIC_PATH . $js_path) && !wp_script_is($handle, 'registered')) {
             wp_register_script( $handle, PUBLIC_SRC . $js_path, ['core-theme-script'], null, true );
-
-            // wp_localize_script( $handle, 'block_data', ['data' => acf_get_fields('block_hammer-blocks_' . $slug)] );
         }
     };
 

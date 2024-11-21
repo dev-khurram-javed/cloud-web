@@ -26,7 +26,7 @@ wp_register_component('Pagination', function($data) {
     ));
 ?>
     <div>
-        <?php $pagination; ?>
+        <?= $pagination; ?>
     </div>
 
 <?php

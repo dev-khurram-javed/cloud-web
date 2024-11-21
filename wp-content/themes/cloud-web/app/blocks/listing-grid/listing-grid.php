@@ -1,36 +1,17 @@
 <?php 
     $render = function ($data) {
-        $post_types = get_field('post_types');
-        $posts_per_page = get_field('posts_per_page') ?: 3;
-        $orderby = get_field('order_by') ?: 'date';
-        $order = get_field('order') ?: 'ASC';
-        $search = (isset($_GET['search_term']) && $_GET['search_term']) ? $_GET['search_term'] : '';
+        $archive = wp_get_archive_data();
+        $data['fields'] = (empty($data['fields'])) ? get_fields() : $data['fields'];
 
-        $query_args = array(
-            'post_type' => $post_types,
-            'posts_per_page' => $posts_per_page,
-            'orderby' => $orderby,
-            'order' => $order,
-            'paged' => get_query_var('paged'),
-            's' => $search
-        );
-
-        // Check if Archive Page
-        $term = get_queried_object();
-        if ($term instanceof WP_Term) {
-            $taxonomy = get_taxonomy($term->taxonomy);
-
-            $query_args['post_type'] = $taxonomy->object_type;
-            $query_args['tax_query'] = [
-                [
-                    'taxonomy' => $term->taxonomy,
-                    'field' => 'slug',
-                    'terms' => $term->slug,
-                ],
-            ];
+        if (!$archive) {
+            echo 'Archive Support is not configured properly. Please check the sidebar.';
+            return;
         }
 
-        $query = new WP_Query($query_args);
+        $archive['query_params']['orderby'] = get_field('order_by') ?: 'date';
+        $archive['query_params']['order'] = get_field('order') ?: 'ASC';
+
+        $query = new WP_Query($archive['query_params']);
 
         $posts = $query->posts;
         
@@ -40,29 +21,7 @@
         }
 
         $total_posts = $query->found_posts;
-
-        $filters = [];
-        $tax_obj = get_object_taxonomies( get_field('post_types'), 'objects' );
-        
-        foreach ($tax_obj as $tax) {
-            $terms = get_terms([
-                'taxonomy' => $tax->name,
-                'hide_empty' => true,
-            ]);
-
-            if (empty($terms)) {
-                continue;
-            }
-
-            $filters[$tax->name]['options'] = array_map(function ($term) use ($tax) {
-                return [
-                    'label' => $term->name,
-                    'value' => get_term_link($term->term_id, $tax->name),
-                ];
-            }, $terms);
-
-            $filters[$tax->name]['label'] = $tax->label;
-        }
+        $posts_per_page = $archive['query_params']['posts_per_page'];
 
         $show_filters = (get_field('show_filters') !== null) ? get_field('show_filters') : true;
         $show_search = (get_field('show_search') !== null) ? get_field('show_search') : true;
@@ -136,15 +95,9 @@
 $fields = [
     wp_acf_field('Overline', 'text'),
     wp_acf_field('Heading', 'headline'),
-    wp_acf_field('Post Types', 'select', [
-        'choices' => list_post_types(),
-        'multiple' => 1,
-        'instructions' => 'Select the post types you want to display. (Hold ctrl or cmd to select multiple options.)',
+    wp_acf_field('Automatic', 'message', [
+        'message' => 'Block will pull Posts Automatically, Enable Archive Support for this Page and Select approprtiate options.',
     ]),
-    wp_acf_field('Posts Per Page', 'number', [
-        'min' => 1,
-        'default_value' => 9
-    ], '33.33%'),
     wp_acf_field('Pagination Type', 'button_group', [
         'choices' => [
             'pagination' => 'Number Pagination',
