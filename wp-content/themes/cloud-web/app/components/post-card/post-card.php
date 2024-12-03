@@ -64,7 +64,9 @@ wp_register_component('Post Card', function($data) {
         <?php
             if (has_post_thumbnail($post_id) && $fields['show_image']) :
                 component('image', [
-                    'post_id' => $post_id,
+                    //'post_id' => $post_id,
+                    'url' => get_the_post_thumbnail_url( $post_id, 'large' ),
+                    'alt' => $post->post_title,
                     'link' => [
                         'url' => get_the_permalink($post_id),
                         'title' => $post->post_title
