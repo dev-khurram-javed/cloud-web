@@ -38,7 +38,7 @@
             @include stack('v');
 
             @include media('>phone') {
-                max-width: fluid(400, 560);
+                max-width: fluid(520, 786);
                 text-align: left;
             }
         }
