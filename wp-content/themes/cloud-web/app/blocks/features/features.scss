@@ -68,13 +68,13 @@
     }
 
     .feats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: fluid(20, 30);
-        flex: 1;
+        @include stack('>');
 
-        @include media('>tablet') {
-            grid-template-columns: 1fr 1fr 1fr;
+        gap: fluid(20, 30);
+        flex-wrap: wrap;
+
+        @include media('>phone') {
+            width: calc(100% - fluid(320, 420));
         }
 
         .col {
@@ -82,9 +82,16 @@
 
             gap: rem(10);
             align-items: center;
+            justify-content: space-around;
             background-color: $accent;
-            padding: fluid(12, 20);
+            padding: fluid(10, 15);
             border-radius: rem(20);
+            min-height: fluid(140, 194);
+            width: calc(50% - fluid(11, 18));
+
+            @include media('>tablet') {
+                width: calc(33.33% - fluid(14, 20));
+            }
 
             .icon {
                 display: block;
@@ -113,6 +120,8 @@
             }
 
             .title {
+                font-size: fluid(18, 22);
+                line-height: 1.2;
                 font-weight: 400;
                 color: $secondary;
                 text-align: center;
