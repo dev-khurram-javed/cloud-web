@@ -136,13 +136,13 @@ function enqueue_component_scripts($label, $area = 'all') {
     if (file_exists($css_path)) {
         if ($area == 'all' || $area == 'frontend') {
             if (!wp_style_is($handle)) {
-                wp_enqueue_style( $handle, $css_src, [] );
+                wp_enqueue_style( $handle, $css_src, [], null );
             }
         }
 
         if ($area == 'all' || $area == 'admin') {
             add_action( 'admin_enqueue_scripts', function() use($handle, $css_src) {
-                wp_enqueue_style( $handle . '-admin', $css_src, [] );
+                wp_enqueue_style( $handle . '-admin', $css_src, [], null );
             });
         }
     }

@@ -70,6 +70,7 @@ $fields = [
         ]
     ]),
     wp_acf_field('Text', 'textarea', [
+        'new_lines' => 'br',
         'show_if' => [
             'field' => 'content_type',
             'operator' => '==',

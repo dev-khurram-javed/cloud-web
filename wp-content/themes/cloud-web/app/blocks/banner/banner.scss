@@ -33,9 +33,14 @@
 
         .content {
             gap: rem(10);
-            max-width: fluid(400, 560);
+            text-align: center;
 
             @include stack('v');
+
+            @include media('>phone') {
+                max-width: fluid(400, 560);
+                text-align: left;
+            }
         }
 
         .headline {
