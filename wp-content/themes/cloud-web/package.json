@@ -14,6 +14,7 @@
         "dotenv": "^16.1.4",
         "gulp": "^5.0.0",
         "gulp-clean": "^0.4.0",
+        "gulp-concat": "^2.6.1",
         "gulp-sass": "^5.1.0",
         "gulp-sourcemaps": "^3.0.0",
         "include-media": "^2.0.0",

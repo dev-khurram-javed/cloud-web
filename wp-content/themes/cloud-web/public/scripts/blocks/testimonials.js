@@ -1,2 +1,1 @@
 window.coreTheme.blocks("testimonials",(e=>{const o=e.querySelector(".slider-carousel");o&&new window.packages.swiper(o,{autoplay:!0,speed:500,loop:!0,effect:"fade",navigation:{prevEl:e.querySelector(".js-prev"),nextEl:e.querySelector(".js-next")},pagination:{el:e.querySelector(".swiper-pagination"),clickable:!0}})}));
-//# sourceMappingURL=testimonials.js.map

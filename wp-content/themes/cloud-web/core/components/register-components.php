@@ -12,9 +12,6 @@ function wp_register_component ($label, $render, $default_data = []) {
 
     $components[$slug]['data'] = $default_data;
     $components[$slug]['render'] = $render;
-
-    // Enqueue Admin Assets
-    enqueue_component_scripts($slug, 'admin');
 }
 
 function component($label, $data = [], $classes = '', $attrs = [], $render = true) {
@@ -36,9 +33,6 @@ function component($label, $data = [], $classes = '', $attrs = [], $render = tru
     } else {
         $data = $components[$label]['data'];
     }
-
-    // Enqueue Assets
-    enqueue_component_scripts($label, 'frontend');
 
     // Convert to DOM
     $dom = convert_to_DOM($components[$label]['render'], $data);
@@ -119,49 +113,4 @@ function add_attrs($dom, $attrs) {
     $html = $dom->saveHTML();
 
     return $html;
-}
-
-// Enqueue Component Scripts
-function enqueue_component_scripts($label, $area = 'all') {
-
-    if(!$label) return;
-
-    $handle = 'component-' . $label;
-
-    // Enqueue Assets
-    $comp_css = '/styles/components/' . $label . '/' . $label . '.css';
-    $css_path = PUBLIC_PATH . $comp_css;
-    $css_src = PUBLIC_SRC . $comp_css;
-
-    if (file_exists($css_path)) {
-        if ($area == 'all' || $area == 'frontend') {
-            if (!wp_style_is($handle)) {
-                wp_enqueue_style( $handle, $css_src, [], null );
-            }
-        }
-
-        if ($area == 'all' || $area == 'admin') {
-            add_action( 'admin_enqueue_scripts', function() use($handle, $css_src) {
-                wp_enqueue_style( $handle . '-admin', $css_src, [], null );
-            });
-        }
-    }
-
-    $comp_js = '/scripts/components/' . $label . '.js';
-    $js_path = PUBLIC_PATH . $comp_js;
-    $js_src = PUBLIC_SRC . $comp_js;
-
-    if (file_exists($js_path)) {
-        if ($area == 'all' || $area == 'frontend') {
-            if (!wp_script_is($handle)) {
-                wp_enqueue_script( $handle, $js_src, [], '', ['strategy' => 'defer', 'in_footer' => true] );
-            }
-        }
-
-        if ($area == 'all' || $area == 'admin') {
-            add_action( 'admin_enqueue_scripts', function() use($handle, $js_src) {
-                wp_enqueue_script( $handle . '-admin', $js_src, [], '', ['strategy' => 'defer', 'in_footer' => true] );
-            });
-        }
-    }
 }

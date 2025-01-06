@@ -4,6 +4,8 @@
 function theme_core_scripts() {
     wp_enqueue_style( 'app-styles', PUBLIC_SRC . '/styles/app.css', [] );
     wp_enqueue_script( 'core-theme-script', PUBLIC_SRC . '/scripts/core-theme.js', array(), null, true );
+    wp_enqueue_style( 'component-styles', PUBLIC_SRC . '/styles/components/components-styles.min.css', [] );
+    wp_enqueue_script( 'component-scripts', PUBLIC_SRC . '/scripts/components/components-scripts.min.js', array(), null, true );
 
     if (is_admin()) {
         wp_enqueue_style( 'admin-styles', get_template_directory_uri() . '/core/assets/styles/admin.css', [] );

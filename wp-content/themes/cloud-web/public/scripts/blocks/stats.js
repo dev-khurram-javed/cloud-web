@@ -1,2 +1,1 @@
 window.coreTheme.blocks("stats",(n=>{const t=n.querySelectorAll(".num");let e=!0;const o=()=>{const{scrollY:o}=window;o>=n.getBoundingClientRect().top+document.documentElement.scrollTop&e&&(t.forEach((n=>{((n,t)=>{let e=null;const o=s=>{e||(e=s);const l=Math.min((s-e)/800,1);n.innerHTML=Math.floor(l*(0+t)),l<1&&window.requestAnimationFrame(o)};window.requestAnimationFrame(o)})(n,n.dataset.number)})),e=!1)};n.classList.contains("animate-numbers")&&window.addEventListener("scroll",o),o()}));
-//# sourceMappingURL=stats.js.map

@@ -1,2 +1,1 @@
 window.coreTheme.blocks("team-grid",(e=>{const r=e.querySelector(".slider-carousel");r&&new window.packages.swiper(r,{slidesPerView:1,spaceBetween:30,navigation:{prevEl:e.querySelector(".js-prev"),nextEl:e.querySelector(".js-next")},breakpoints:{580:{slidesPerView:2},1024:{slidesPerView:3}}})}));
-//# sourceMappingURL=team-grid.js.map

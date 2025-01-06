@@ -7,6 +7,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const webpack = require('webpack-stream');
 const clean = require('gulp-clean');
 const named = require('vinyl-named');
+const concat = require('gulp-concat');
 
 const actions = {
     /**
@@ -35,6 +36,7 @@ const actions = {
             return gulp.src('./app/components/**/*.scss')
                 .pipe(sourcemaps.init())
                 .pipe(sass({ outputStyle: 'compressed', includePaths: ['node_modules', 'core/assets/styles', 'app/assets/styles'] }).on('error', sass.logError))
+                .pipe(concat('components-styles.min.css'))
                 .pipe(sourcemaps.write('.'))
                 .pipe(gulp.dest('./public/styles/components'))
                 .pipe(browserSync.reload({ stream: true }));
@@ -63,6 +65,7 @@ const actions = {
             return gulp.src('./app/components/**/*.js')
                 .pipe(named())
                 .pipe(webpack(require('./webpack.config.js')))
+                .pipe(concat('components-scripts.min.js'))
                 .pipe(gulp.dest('./public/scripts/components'))
         }
     },
@@ -127,7 +130,6 @@ const actions = {
 }
 
 const tasks = {
-
     default: () => {
         const taskActions = [
             actions.clearPublicDir,

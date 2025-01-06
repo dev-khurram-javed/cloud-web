@@ -32,14 +32,14 @@
         @include stack('v');
 
         .content {
-            gap: rem(10);
+            gap: rem(20);
             text-align: center;
 
             @include stack('v');
 
             @include media('>phone') {
-                max-width: fluid(520, 786);
-                text-align: left;
+                max-width: fluid(520, 1070);
+                text-align: justify;
             }
         }
 
